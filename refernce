@@ -1,0 +1,17 @@
+# admin : admin
+# password : mtn1203wers
+data:
+dob 
+name 
+state 
+video link 
+position 
+tournament
+description
+profile image
+
+
+
+user should be able to add a comment and also decide shortlisted or rejected
+
+nqueen
