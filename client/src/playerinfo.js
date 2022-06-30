@@ -1,10 +1,9 @@
 import React from 'react'
 
-const playerinfo = (props) => {
+const playerinfo = () => {
   return (
-    <div>{props.data}hello</div>
-  );
+    <div>playerinfo</div>
+  )
 }
 
 export default playerinfo
-

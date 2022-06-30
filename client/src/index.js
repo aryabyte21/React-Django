@@ -3,7 +3,12 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import Modal from "react-modal";
 import "./index.css"
-
+import { BrowserRouter} from "react-router-dom";
 Modal.setAppElement("#root");
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById("root")
+);

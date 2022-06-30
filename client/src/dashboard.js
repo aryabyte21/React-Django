@@ -10,8 +10,9 @@ import { ReactComponent as SvgDecoratorBlob1 } from "images/svg-decorator-blob-5
 import { ReactComponent as SvgDecoratorBlob2 } from "images/svg-decorator-blob-7.svg";
 import { PrimaryButton } from "components/misc/Buttons.js";
 import Playerinfo from "playerinfo";
-import Modal from "./modal";
-
+import "App.module.css";
+import { Link } from "react-router-dom";
+import Modal from "./components/modal/Modal";
 const HeaderRow = tw.div`flex justify-between items-center flex-col xl:flex-row`;
 const Header = tw(SectionHeading)``;
 const TabsControl = tw.div`flex flex-wrap bg-gray-200 px-2 py-2 rounded leading-none mt-12 xl:mt-0`;
@@ -46,27 +47,22 @@ const CardRating = styled.div`
     ${tw`w-4 h-4 fill-current text-orange-400 mr-1`}
   }
 `;
-
 const CardHoverOverlay = styled(motion.div)`
   background-color: rgba(255, 255, 255, 0.5);
   ${tw`absolute inset-0 flex justify-center items-center`}
 `;
 const CardButton = tw(PrimaryButtonBase)`text-sm`;
-
 const CardReview = tw.div`font-medium text-xs text-gray-600`;
-
 const CardText = tw.div`p-4 text-gray-900`;
 const CardTitle = tw.h5`text-lg font-semibold group-hover:text-primary-500`;
-const CardContent = tw.p`mt-1 text-sm font-medium text-gray-600`;
+const CardContent = tw.p`mt-1 text-sm font-medium text-gray-600 z-0`;
 const CardPrice = tw.p`mt-4 text-xl font-bold`;
-
 const DecoratorBlob1 = styled(SvgDecoratorBlob1)`
   ${tw`pointer-events-none -z-20 absolute right-0 top-0 h-64 w-64 opacity-15 transform translate-x-2/3 -translate-y-12 text-pink-400`}
 `;
 const DecoratorBlob2 = styled(SvgDecoratorBlob2)`
   ${tw`pointer-events-none -z-20 absolute left-0 bottom-0 h-80 w-80 opacity-15 transform -translate-x-2/3 text-primary-500`}
 `;
-
 
 class dashboard extends Component {
   state = {
@@ -99,7 +95,6 @@ class dashboard extends Component {
             <Header>Kabaddi Talent Hunt</Header>
             <PrimaryButton>Logout</PrimaryButton>
           </HeaderRow>
-          <Modal />
           <TabContent>
             {this.state.todos.map((item, id) => (
               <CardContainer item={item} key={id}>
@@ -124,7 +119,14 @@ class dashboard extends Component {
                       }}
                       transition={{ duration: 0.3 }}
                     >
-                      <CardButton>Scout</CardButton>
+                        <Link
+                          to={{
+                            pathname: `/dashboard/${item.first_name + item.last_name}`,
+                            state: { item },
+                          }}
+                        >
+                        <CardButton>Scout</CardButton>
+                      </Link>
                     </CardHoverOverlay>
                   </CardImageContainer>
                   <CardText>
@@ -135,13 +137,13 @@ class dashboard extends Component {
                     <CardContent>{item.state}</CardContent>
                     <CardPrice>{item.dob}</CardPrice>
                     <CardContent>{item.DatePosted}</CardContent>
-                    <div
+                    {/* <div
                       className="box"
                       key={id}
                       onClick={this.clickHappens(id)} // <-- pass id to toggle
                     >
                       {this.state.clicked === id ? ( // <-- check id match
-                        <Card>hi</Card>
+                        <Modal/>
                       ) : (
                         <button
                           class="block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -151,7 +153,7 @@ class dashboard extends Component {
                           Extra large modal
                         </button>
                       )}
-                    </div>
+                    </div> */}
                     {/* here we will display the hidden content that is video url and all iff the user clicks the scout button and also the comments which we will put a box for!! */}
                   </CardText>
                 </Card>
