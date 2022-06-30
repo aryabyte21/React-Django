@@ -24,6 +24,7 @@ export default ({ url, background="black", className="video" }) => {
         }}
         src={url}
         frameBorder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       />
     </div>
   );
