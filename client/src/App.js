@@ -8,6 +8,7 @@ import Playerinfo from "playerinfo";
 import Dashboard from "dashboard";
 import LoginPage from "pages/Login.js";
 import Playerscreen from "playerscreen";
+import Modal from "modal";
 import ReactModalAdapter from "helpers/ReactModalAdapter";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SimpleContactUs from "components/forms/SimpleContactUs.js";
